@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .chat-box {
+            padding: 20px;
+            overflow-y: scroll;
+            max-height: 400px;
+        }
+
+        .message {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .user-message {
+            background-color: #4caf50;
+        }
+
+        .user-input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        .user-input:focus {
+            outline: none;
+        }
+
+        .send-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .send-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Chat Bot</div>
+        <div class="chat-box" id="chat-box">
+            <!-- Messages will be displayed here -->
+        </div>
+        <div>
+            <input type="text" class="user-input" id="user-input" placeholder="Digite sua mensagem...">
+            <button class="send-button" id="send-button">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code for handling chat interactions
+        const chatBox = document.getElementById("chat-box");
+        const userInput = document.getElementById("user-input");
+        const sendButton = document.getElementById("send-button");
+
+        sendButton.addEventListener("click", () => {
+            const userMessage = userInput.value;
+            if (userMessage.trim() !== "") {
+                appendMessage(userMessage, true);
+                userInput.value = "";
+            }
+        });
+
+        function appendMessage(message, isUser) {
+            const messageDiv = document.createElement("div");
+            messageDiv.className = "message";
+            if (isUser) {
+                messageDiv.classList.add("user-message");
+            }
+            messageDiv.textContent = message;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom of the chat
+        }
+    </script>
+</body>
+</html>
