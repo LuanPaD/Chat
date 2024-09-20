@@ -75,7 +75,6 @@
     <div class="container">
         <div class="header">Chat Bot</div>
         <div class="chat-box" id="chat-box">
-            <!-- Messages will be displayed here -->
         </div>
         <div>
             <input type="text" class="user-input" id="user-input" placeholder="Digite sua mensagem...">
@@ -84,7 +83,6 @@
     </div>
 
     <script>
-        // JavaScript code for handling chat interactions
         const chatBox = document.getElementById("chat-box");
         const userInput = document.getElementById("user-input");
         const sendButton = document.getElementById("send-button");
@@ -105,7 +103,7 @@
             }
             messageDiv.textContent = message;
             chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom of the chat
+            chatBox.scrollTop = chatBox.scrollHeight; 
         }
     </script>
 </body>
